@@ -12,8 +12,9 @@
  * アイコンのために追加
  *= require material_icons
  *= require_self
+ *= require fullcalendar
  *= require_tree .
  */
  
 // materializecssをインポートする
-@import "materialize";
+// @import "materialize";
