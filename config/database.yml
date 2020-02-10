@@ -47,8 +47,15 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+#production:
+#  <<: *default
+#  database: task_manage_production
+#  username: task_manage
+#  password: <%= ENV['TASK_MANAGE_DATABASE_PASSWORD'] %>
+
 production:
+#半角スペース２個分の空白を開ける
   <<: *default
-  database: task_manage_production
-  username: task_manage
-  password: <%= ENV['TASK_MANAGE_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
