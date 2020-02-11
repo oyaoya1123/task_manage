@@ -8,5 +8,5 @@
 
 User.create!(name:  "test_user",
   email: "test1@test.co.jp",
-  password:              "A-123456",
-  password_confirmation: "A-123456")
+  password:              "foobar",
+  password_confirmation: "foobar")
