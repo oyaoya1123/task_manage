@@ -1,8 +1,30 @@
 %p#notice= notice
-%h1 Tasks
-- if user_signed_in?
-  %p
-    Sign In User : #{current_user.name}
+.index-header
+  = link_to tasks_path do
+    = image_tag "logo.png", size: "250x64", alt: "タスク管理"
+  %ul.index-header__boxes
+    - if user_signed_in?
+      %li
+        = link_to new_task_path, class: "btn-border" do
+          = icon('fas', 'check')
+          新規タスク
+      %li
+        = link_to destroy_user_session_path, method: :delete, class: "btn-border" do
+          = icon('fas', 'check')
+          ログアウト
+    - else
+      %li
+        = link_to new_user_session_path, class: "btn-border" do
+          = icon('fas', 'check')
+          ログイン
+      %li
+        = link_to new_user_registration_path, class: "btn-border" do
+          = icon('fas', 'check')
+          新規登録
+
+  - if user_signed_in?
+    %p
+      Sign In User : #{current_user.name}
 %table
   %thead
     %tr

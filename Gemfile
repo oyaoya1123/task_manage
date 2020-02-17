@@ -79,3 +79,4 @@ gem 'momentjs-rails'
 gem 'pry-byebug'
 
 gem 'haml-rails'
+gem "font-awesome-sass"
