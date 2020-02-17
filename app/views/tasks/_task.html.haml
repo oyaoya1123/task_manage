@@ -1,0 +1,10 @@
+%section
+  %tr
+    %td= task.title
+    %td= task.user.name
+    %td{:id => "task#{task.id}"}= task.status
+    %td= link_to 'Show', task
+    - if user_signed_in? && task.user.id == current_user.id
+      %td= link_to 'Edit', edit_task_path(task)
+      %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+      %td{:id => "button#{task.id}"}= render 'done_wip/done_wip', task: task
