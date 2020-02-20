@@ -1,4 +1,4 @@
-- if task.status == "Done"
-  = button_to 'WIP', wip_path(task), method: :post, remote: true
+- if task.status == "完了"
+  = button_to '途中', wip_path(task), method: :post, remote: true
 - else
-  = button_to 'Done', done_path(task), method: :post, remote: true
+  = button_to '完了', done_path(task), method: :post, remote: true

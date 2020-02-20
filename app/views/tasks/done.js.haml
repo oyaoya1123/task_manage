@@ -1,2 +1,2 @@
-$('#task#{@task.id}').text('Done');
+$('#task#{@task.id}').text('完了');
 $('#button#{@task.id}').html('#{escape_javascript(render("done_wip/done_wip", task: @task ))}')

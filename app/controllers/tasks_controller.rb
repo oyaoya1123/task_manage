@@ -24,7 +24,7 @@ class TasksController < ApplicationController
 
   # POST /tasks/1/done
   def done
-    @task.update(status: "Done")
+    @task.update(status: "完了")
     @tasks = Task.all.includes(:user)
     #render :index
 
@@ -45,7 +45,7 @@ class TasksController < ApplicationController
 
     # POST /tasks/1/wip
     def wip
-      @task.update(status: "WIP")
+      @task.update(status: "途中")
       @tasks = Task.all.includes(:user)
     end
 

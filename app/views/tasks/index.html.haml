@@ -1,45 +1,44 @@
-%p#notice= notice
 .index-header
-  = link_to tasks_path do
-    = image_tag "logo.png", size: "250x64", alt: "タスク管理"
-  %ul.index-header__boxes
-    - if user_signed_in?
-      %li
-        = link_to new_task_path, class: "btn-border" do
-          = icon('fas', 'check')
-          新規タスク
-      %li
-        = link_to destroy_user_session_path, method: :delete, class: "btn-border" do
-          = icon('fas', 'check')
-          ログアウト
-    - else
-      %li
-        = link_to new_user_session_path, class: "btn-border" do
-          = icon('fas', 'check')
-          ログイン
-      %li
-        = link_to new_user_registration_path, class: "btn-border" do
-          = icon('fas', 'check')
-          新規登録
-
+  .index-header__contents
+    = link_to tasks_path do
+      = image_tag "logo.png", size: "250x64", alt: "タスク管理"
+    %ul.index-header__contents__boxes
+      - if user_signed_in?
+        .between-side
+          %li
+            = link_to new_task_path, class: "btn-border" do
+              .icon
+                = icon('fas', 'tasks')
+              新規タスク
+          %li
+            = link_to destroy_user_session_path, method: :delete, class: "btn-border" do
+              = icon('fas', 'sign-out-alt')
+              ログアウト
+      - else
+        .left-side
+          %li
+            = link_to new_user_registration_path, class: "btn-border" do
+              = icon('fas', 'user-plus')
+              新規登録
+          %li
+            = link_to new_user_session_path, class: "btn-border" do
+              = icon('fas', 'sign-in-alt')
+              ログイン
+              
   - if user_signed_in?
     %p
-      Sign In User : #{current_user.name}
-%table
-  %thead
-    %tr
-      %th Content
-      %th UserName
-      %th Status
-  %tbody
-    = render :partial => 'task', :collection => @tasks
-%br/
-- if user_signed_in?
-  = link_to 'New Task', new_task_path
-  = link_to 'Sign Out', destroy_user_session_path, method: :delete
-- else
-  = link_to 'Sign In', new_user_session_path
-  = link_to 'Sign Up', new_user_registration_path
-%br/
-%br/
-#calendar
+      //Sign In User : #{current_user.name}
+.main-wrapper
+  %table.tasks-wrapper
+    %thead.tasks-wrapper__thead-boxes
+      %tr.tasks-wrapper__thead-boxes__contents
+        %th.tasks-wrapper__thead-boxes__contents__content タスク名
+        %th.tasks-wrapper__thead-boxes__contents__content ユーザ名
+        %th.tasks-wrapper__thead-boxes__contents__content ステータス
+        %th.tasks-wrapper__thead-boxes__contents__content
+        %th.tasks-wrapper__thead-boxes__contents__content
+        %th.tasks-wrapper__thead-boxes__contents__content
+    %tbody.tasks-wrapper__tbody-boxes
+      = render :partial => 'task', :collection => @tasks
+  .calender-wraper
+    #calendar

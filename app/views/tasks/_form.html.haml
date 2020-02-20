@@ -21,6 +21,6 @@
     = form.datetime_select :end_date, :minute_step => 15
   .field
     = form.label :status
-    = form.select :status, ["New","WIP","Done","Pending"], :selected=>task.status
+    = form.select :status, ["新規","途中","完了","保留"], :selected=>task.status
   .actions
     = form.submit
