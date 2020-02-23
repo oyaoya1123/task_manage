@@ -1,5 +1,9 @@
-%h1 Editing Task
-= render 'form', task: @task
-= link_to 'Show', @task
-|
-= link_to 'Back', tasks_path
+.new-wrapper
+  .new-wrapper__contents
+    .new-wrapper__contents__header
+      %h1 タスクの修正
+    = render 'form', task: @task
+    .new-wrapper__contents__footer
+      = link_to '詳細', @task
+      |
+      = link_to '戻る', tasks_path

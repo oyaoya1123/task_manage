@@ -7,20 +7,23 @@
       %ul
         - task.errors.full_messages.each do |message|
           %li= message
-  .field
-    = form.label :title
-    = form.text_field :title
-  .field
-    = form.label :content
-    = form.text_area :content
-  .field
-    = form.label :start_date
-    = form.datetime_select :start_date, :minute_step => 15
-  .field
-    = form.label :end_date
-    = form.datetime_select :end_date, :minute_step => 15
-  .field
-    = form.label :status
-    = form.select :status, ["新規","途中","完了","保留"], :selected=>task.status
-  .actions
-    = form.submit
+  .new-wrapper__contents__content
+    .field
+      = form.label :title, "タスク名", class: "default-label"
+      = form.text_field :title, class: "default-text"
+    .field
+      = form.label :content, "タスク詳細", class: "default-label"
+      = form.text_area :content, class: "default-text"
+    .field
+      = form.label :start_date, "開始日時", class: "default-label"
+      = form.datetime_select :start_date, :minute_step => 15, use_month_numbers: true, date_separator: '/ '
+      //!= sprintf(form.datetime_select(:start_date, :minute_step => 15, use_month_numbers:true, class: "default-date-select", date_separator:'%s'),'年','月')+'日'
+    .field
+      = form.label :end_date, "終了日時", class: "default-label"
+      = form.datetime_select :end_date, :minute_step => 15, use_month_numbers: true, date_separator: '/ '
+    .field
+      = form.label :status, "ステータス", class: "default-label"
+      = form.select :status, ["新規","途中","完了","保留"], :selected=>task.status
+    .actions
+      //= form.submit
+      = button_tag "登録", type: 'submit', class: "btn-form"
